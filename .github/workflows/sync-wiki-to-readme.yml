@@ -22,11 +22,10 @@ jobs:
         
     - name: Convert wiki links and copy to README
       run: |
-        # Copy Home.md to README.md
         cp wiki-content/Home.md README.md
-        
-        # Convert wiki links to absolute URLs
-        sed -i 's/\[\([^]]*\)\](\([^)]*\))/[\1](https:\/\/github.com\/E-Ams\/Custom_Tools\/wiki\/\2)/g' README.md
+        # More robust sed command for link conversion
+        sed -i.bak -E 's|\[([^]]*)\]\(((?!https?://)[^)]*)\)|[\1](https://github.com/E-Ams/Custom_Tools/wiki/\2)|g' README.md
+        rm -f README.md.bak
         
     - name: Commit and push if changed
       run: |
