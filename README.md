@@ -1,7 +1,9 @@
 # PowerShell Utility Scripts
 
-This repository contains PowerShell scripts designed to automate file compression and document conversion tasks.
+This repository contains PowerShell scripts designed to automate/semi-automate file management related tasks.
 
+## Global Prerequisites
+* **Windows PowerShell:** Built into Windows.
 ---
 
 ## 1. Zip Folders Individually (`Zip_Folders_Individually.ps1`)
@@ -10,10 +12,8 @@ This repository contains PowerShell scripts designed to automate file compressio
 This script scans a user-specified directory for immediate sub-folders and compresses each folder into its own distinct `.zip` archive. The resulting files are saved in the same root directory as the original folders.
 
 ### Prerequisites
-To run this script, you need:
 * **7-Zip:** The script relies on the `7z.exe` executable to perform compression.
     * *Download:* [https://www.7-zip.org/](https://www.7-zip.org/)
-* **Windows PowerShell:** Built into Windows.
 
 ### Configuration
 **Important:** The script is pre-configured to look for 7-Zip at this specific path:
@@ -35,10 +35,8 @@ If your 7-Zip installation is in a custom location, you must edit the `$7zipPath
 This script recursively searches through a source directory for PowerPoint files (`.ppt` and `.pptx`) and converts them to PDF format. It automatically recreates the source folder structure in the destination directory to keep files organized.
 
 ### Prerequisites
-To run this script, you need:
 * **Microsoft PowerPoint:** The script creates a `PowerPoint.Application` COM object, meaning actual PowerPoint software must be installed on the machine for the conversion to work.
     * *Reference:* [Microsoft Office PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint)
-* **Windows PowerShell:** Built into Windows.
 
 ### Usage
 1.  Run the script.
