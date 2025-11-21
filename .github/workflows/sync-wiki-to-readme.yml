@@ -20,12 +20,15 @@ jobs:
         repository: E-Ams/Custom_Tools.wiki
         path: wiki-content
         
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        
     - name: Convert wiki links and copy to README
       run: |
         cp wiki-content/Home.md README.md
-        # More robust sed command for link conversion
-        sed -i.bak -E 's|\[([^]]*)\]\(((?!https?://)[^)]*)\)|[\1](https://github.com/E-Ams/Custom_Tools/wiki/\2)|g' README.md
-        rm -f README.md.bak
+        python .github/scripts/convert_links.py
         
     - name: Commit and push if changed
       run: |
